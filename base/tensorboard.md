@@ -8,10 +8,10 @@
 train_writer = tf.compat.v1.summary.FileWriter('/path/to/log', sess.graph)
 ```
 
+最後將tensorboard的服務開啓，即可打開瀏覽器的 http://localhost:6006 看到輸出結果
 
 ```shell
 tensorboard --logdir=<path to log>
 ```
 
-接著打開瀏覽器的 http://localhost:6006 即可看到輸出結果
-
+![](./pic/RzAx2MyP.png) 

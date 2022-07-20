@@ -13,6 +13,9 @@ pip3 install tensorflow==2.6
 ```
 
 
+## 參考
+[中文參考網站](https://tf.wiki/zh_hant/advanced/static.html)
+
 
 
 
