@@ -33,7 +33,7 @@ tensorboard --logdir=<path to log>
 在2.x的版本中，會自動將`tp.summary`的兩項工作自動結合。所以各個`tf.summary`操作在執行時，立即寫入數據。
 
 
-`tf.summary.create_file_writer("/tmp/mylogs/eager")`取代了原本的工作`writer = tf.summary.create_file_writer("/tmp/mylogs/eager")`，不過要注意，兩個function在執行上的功能是不一樣的。
+`tf.summary.create_file_writer("/tmp/mylogs/eager")`取代了原本的工作`writer = tf.compat.v1.summary.FileWriter('/path/to/log', sess.graph)`，不過要注意，兩個function在執行上的功能是不一樣的。
 
 
 
