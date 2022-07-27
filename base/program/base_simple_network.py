@@ -19,4 +19,3 @@ with writer.as_default():
 
 tf.print(SimpleNetwork(input_1,input_2))
 
-

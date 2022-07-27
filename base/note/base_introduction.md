@@ -9,9 +9,31 @@ Tensorflow 2.x 版本中建議使用Eager Execution作爲主要執行的模式�
 
 在Tensorflow 2.x 中要進行算，必須先將計算圖封裝於函數中，此外還必需使用`@tf.function`的修飾符號。接著呼叫此函數即可進行此運算圖。
 
-[tf1 code](./base_add_tf1.py)
+[tf1 code](../program/base_add_tf1.py)
 
-[tf2 code](./base_add.py)
+[tf2 code](../program/base_add.py)
+
+## tensorflow 運算子
+
+在Tensorflow中提供許運算子在`tf.math`中，像是`add`,`sub`,`mul`,`矩陣乘法`…等等。
+
+[程式碼](../program/operation.py)
+
+
+## tensorflow 隨機生成函數
+
+在Tensorflow中，定義變數`tf.Variable`時，常會使用隨機函數，而隨機生成函被數定義在`tf.random`中。
+
+[Tensorflow官網中](https://www.tensorflow.org/api_docs/python/tf/random)
+
+
+## The Difference of variable and constant
+
+[StackOverFlow](https://stackoverflow.com/questions/44745855/tensorflow-variables-and-constants)
+
+Variable跟Constant中最大的差異，就是Variable之後 __可以__ 更改，但是Constant __不能__ 更改。如果是Variable的話，就可以直接使用`assign`指定變數的值。
+
+[程式碼](../program/variable.py)
 
 
 ## 製作一個Simple Network
@@ -47,6 +69,13 @@ tf.print(SimpleNetwork(input_1,input_2))
 如果用tensorboard可以看到以下的輸出
 
 ![](./pic/WGhnvTgP.png) 
+
+
+## PDB In `tf.function`
+
+在Tensorflow2.x中，新增了`tf.fuction`的方式來定義function，不需特別定義`tf.Graph`與`tf.Session`，不過實質上它是把這個python function轉成計算圖的程式碼，所以如果使用pdb進行除錯時，就會遇指向的是轉換過後的，而不是python function。
+
+如果希望是python fuction，則需要使用`tf.config.run_functions_eagerly(True)`，才能使用。
 
 
 
