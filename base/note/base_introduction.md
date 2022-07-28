@@ -77,5 +77,12 @@ tf.print(SimpleNetwork(input_1,input_2))
 
 如果希望是python fuction，則需要使用`tf.config.run_functions_eagerly(True)`，才能使用。
 
+## CPU 與 GPU 進行不同大小的矩陣計算
+
+[程式碼](../program/cpu_and_gpu.py)
+
+從下圖中可以看到cpu與gpu進行矩陣計算，原本CPU的運算速度是比GPU還快的，但隨著矩陣大小的增加運算速度就越來越慢。
+
+![](./pic/ImatAk8u.png) 
 
 
