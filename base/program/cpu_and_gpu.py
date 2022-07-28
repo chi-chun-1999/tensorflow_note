@@ -61,15 +61,3 @@ plt.show()
 
 
 
-# Example: plot cos(x), sin(x), and sinc(x) in the same figure
-#x1 = np.linspace(0, 2*np.pi)    # 50x1 array between 0 and 2*pi
-#y1 = np.cos(x1)
-#x2 = np.linspace(0, 2*np.pi,20) # 20x1 array
-#y2 = np.sin(x2)
-#x3 = np.linspace(0, 2*np.pi,10) # 10x1 array
-#y3 = np.sinc(x3)
-#
-#plt.plot(x1, y1, 'k--+')   # black dashed line, with "+" markers
-#plt.plot(x2, y2, 'gd')     # green dimonds (no line)
-#plt.plot(x3, y3, 'r:')     # red dotted line (no marker)
-#plt.show()
