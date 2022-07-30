@@ -1,8 +1,10 @@
 import tensorflow as tf
 from timeit import timeit
 
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
+import plotext as plt
 import numpy as np
+
 
 
 n=1
@@ -53,9 +55,12 @@ for i in range(19):
     n_s.append(n)
     print('run time:', cpu_time, gpu_time)
 
-plt.plot(n_s,cpu_times,'r', label='cpu time')
-plt.plot(n_s,gpu_times,'g', label='gpu_time')
-plt.legend()
+#plt.plot(n_s,cpu_times,'r', label='cpu time')
+#plt.plot(n_s,gpu_times,'g', label='gpu_time')
+#plt.legend()
+plt.clf()
+plt.plot(n_s,cpu_times)
+plt.plot(n_s,gpu_times)
 plt.show()
 
 

@@ -85,4 +85,13 @@ tf.print(SimpleNetwork(input_1,input_2))
 
 ![](./pic/ImatAk8u.png) 
 
+## `tf.transpose` and `tf.reshape`
+
+在許多時候，會需要用到shape的轉換，tensorflow提供了兩個不同的方式，且兩種方式都代表不同的涵意。`tf.transpose`比較像是轉罝矩陣，`tf.reshape`則是將原本的矩陣按照原本的順序進行轉換。
+
+
+[tf.transpose](https://www.tensorflow.org/api_docs/python/tf/transpose)
+
+[tf.reshape](https://www.tensorflow.org/api_docs/python/tf/reshape)
+
 
