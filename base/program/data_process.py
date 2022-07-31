@@ -25,8 +25,6 @@ print(b)
 
 # %%  split data to batch
 
-print(b)
-
 batch_size = 3
 batch_num = int(tf.math.floor(len(b)/batch_size))
 #print(b[0:(tf.cast(batch_num,tf.int32)*batch_size)])
