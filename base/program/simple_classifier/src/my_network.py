@@ -1,13 +1,20 @@
+#%load_ext autoreload
+#%autoreload 2
 import tensorflow as tf
 import pdb
-from layer import DenseLayer
+#from layer import *
+from . import layer
+
+import keras
+import importlib
 
 
 class MyNetWork:
-    def __init__(self,batch_size=-1):
+    def __init__(self,batch_size=-1,epoch=100):
         self._parameter=[]
         self._sequential=[]
         self._batch_size=batch_size
+        self.epoch = 100
 
     def setLayer(self,sequential_layer):
         self._sequential = sequential_layer
@@ -19,11 +26,9 @@ class MyNetWork:
 
         self._buildAllLayer()
 
-        predict_y = self._feedForward(self._batches_data[0])
-        print(predict_y)
-
-
-
+        for i in range(self.batch_num):
+            predict_y = self._feedForward(self._batches_data[i])
+            print(predict_y)
 
     def _buildAllLayer(self):
         batches_data_shape = self._batchesDataShape()
@@ -48,8 +53,8 @@ class MyNetWork:
         if(self._batch_size==-1):
             self._batch_size=len(x_train)
 
-        batch_num = int(tf.math.floor(len(x_train)/self._batch_size))
-        self._batches_data = tf.split(x_train[0:batch_num*self._batch_size],num_or_size_splits=batch_num,axis=0)
+        self.batch_num = int(tf.math.floor(len(x_train)/self._batch_size))
+        self._batches_data = tf.split(x_train[0:self.batch_num*self._batch_size],num_or_size_splits=self.batch_num,axis=0)
 
     def _batchesDataShape(self):
         return tf.shape(self._batches_data).numpy()
@@ -58,9 +63,16 @@ class MyNetWork:
     def _feedForward(self,batch_data):
         tmp=tf.matmul(batch_data,self._sequential[0].getWeight())
         predict_y = tf.add(tmp,self._sequential[0].getBias())
+
+        if self._sequential[0].getActivationFunction() == "relu":
+            predict_y = tf.keras.activations.relu(predict_y)
+        
+
         for i in range(1,len(self._sequential)):
             tmp = tf.matmul(predict_y,self._sequential[i].getWeight())
             predict_y = tf.add(tmp,self._sequential[i].getBias())
+            if self._sequential[i].getActivationFunction() == "relu":
+                predict_y = tf.keras.activations.relu(predict_y)
 
         return predict_y
             
@@ -68,16 +80,18 @@ class MyNetWork:
 
 
 
-X_data = tf.random.normal(shape=[10,5],dtype=tf.float32)
-X_data = tf.ones(shape=[10,5],dtype=tf.float32)
+#X_data = tf.random.normal(shape=[10,5],dtype=tf.float32)
+#X_data = tf.ones(shape=[100,5],dtype=tf.float32)
+X_data = tf.fill([100,5],value=2.1)
 y_data = tf.random.normal(shape=[10,1],dtype=tf.float32)
-my_nn = MyNetWork(3)
-my_nn.setLayer([DenseLayer(node_num=3),DenseLayer(3)])
+my_nn = MyNetWork(10)
+my_nn.setLayer([layer.DenseLayer(node_num=3),layer.DenseLayer(3)])
 #my_nn.splitTrainDataToBatches(data)
 my_nn.fit(X_data,y_data)
 #pdb.set_trace()
 my_nn.showAllLayerInfo()
 
+# %%  
 
 
 

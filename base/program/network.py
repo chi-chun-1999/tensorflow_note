@@ -32,10 +32,8 @@ tf.config.run_functions_eagerly(False)
 
 x_3 = tf.constant([3,3],shape=[1,2],dtype=tf.float32)
 
-y = MyNetwork(x_3)
+y = MyNetwork(x_2)
 print(y)
-
-
 
 
 

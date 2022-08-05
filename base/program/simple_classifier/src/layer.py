@@ -1,6 +1,8 @@
 # %% 
 import tensorflow as tf
 import abc
+#from simple_classifier.deps.test  import hello
+import deps.test  
 
 # %% 
 
@@ -26,8 +28,8 @@ class Layer(abc.ABC):
     def getNodeNum(self):
         return self._node_num
 
-
-
+    def getActivationFunction(self):
+        return self._activation_function
 
 class DenseLayer(Layer):
     def __init__(self,node_num = 0, activation_function = "relu"):
@@ -37,10 +39,11 @@ class DenseLayer(Layer):
 
     def buildLayer(self,layer_input_num):
         self._layer_input_num = layer_input_num
-        #self._w = tf.Variable(tf.random.normal(shape=[self._layer_input_num,self._node_num]))
-        #self._b = tf.Variable(tf.random.normal(shape=[self._node_num],dtype=tf.float32))
-        self._w = tf.Variable(tf.ones(shape=[self._layer_input_num,self._node_num]))
-        self._b = tf.Variable(tf.ones(shape=[self._node_num],dtype=tf.float32))
+        self._w = tf.Variable(tf.random.normal(shape=[self._layer_input_num,self._node_num]))
+        self._b = tf.Variable(tf.random.normal(shape=[self._node_num],dtype=tf.float32))
+        #self._w = tf.Variable(tf.ones(shape=[self._layer_input_num,self._node_num]))
+        #self._b = tf.Variable(tf.ones(shape=[self._node_num],dtype=tf.float32))
+        #self._b = tf.Variable(tf.fill([self._node_num],value=4.2))
 
     def setLayer(self,node_num,activation_function):
         self._node_num=node_num
@@ -59,15 +62,5 @@ class DenseLayer(Layer):
         return tf.shape(self._w).numpy()
 
 # %%  
-
-
-dense_layer = DenseLayer(node_num=10,activation_function="relu")
-dense_layer.buildLayer(3)
-
-w , b = dense_layer.getParameter()
-print("w = ",w, "b = ",b)
-shape = dense_layer.getShape()
-print("shape = ",shape)
-    
 
 
