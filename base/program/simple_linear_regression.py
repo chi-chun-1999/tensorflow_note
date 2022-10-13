@@ -6,7 +6,6 @@ import plotext as plt
 import numpy as np
 
 
-
 # %%  
 
 @tf.function
