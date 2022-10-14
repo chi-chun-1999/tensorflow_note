@@ -98,4 +98,4 @@ print(evaluate_value)
 
 # %%  
 
-a = model.predict(test_x)
+model.predict(test_x)
