@@ -2,6 +2,7 @@ dataset
 _book
 node_modules
 *.pdf
+*.h5
 
 
 # Byte-compiled / optimized / DLL files
