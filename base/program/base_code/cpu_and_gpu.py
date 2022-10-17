@@ -1,8 +1,8 @@
 import tensorflow as tf
 from timeit import timeit
 
-#import matplotlib.pyplot as plt
-import plotext as plt
+import matplotlib.pyplot as plt
+#import plotext as plt
 import numpy as np
 
 

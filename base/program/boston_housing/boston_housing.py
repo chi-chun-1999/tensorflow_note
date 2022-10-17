@@ -47,7 +47,7 @@ def smooth_curve(points,factor = 0.9):
 k = 4
 num_val_samples = len(train_data) // k
 
-num_epoch = 500
+num_epoch = 10
 
 all_mae_histories = []
 
